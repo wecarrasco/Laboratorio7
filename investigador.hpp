@@ -19,4 +19,4 @@ protected:
 	int casosAtendidos;
 	int casosCerrados;
 	int casosSinResolver;
-}
+};
