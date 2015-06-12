@@ -1,10 +1,13 @@
 #include "persona.hpp"
+#include <string>
+#include <sstream>
 
+using namespace std;
 
-persona::persona(string RealName,string UserName,string password,int age,string ID,string birth);
+persona::persona(string RealName,string UserName,string password,int age,string ID,string birth){
 	this-> RealName = RealName;
 	this-> UserName = UserName;
-	this-> password = password
+	this-> password = password;
 	this-> age = age;
 	this-> ID = ID;
 	this-> birth = birth;
@@ -14,53 +17,53 @@ persona::~persona(){
 
 }
 
-void setRealName(string RealName){
+void persona::setRealName(string RealName){
 	this->RealName = RealName;
 }
 
-string getRealName()const{
+string persona::getRealName()const{
 	return this->RealName;
 }
 
-void setUser(string UserName){
+void persona::setUser(string UserName){
 	this->UserName = UserName;
 }
 
-string getUser()const{
+string persona::getUser()const{
 	return this->UserName;
 }
 
-void setPassword(string password){
+void persona::setPassword(string password){
 	this->password = password;
 }
-string getPassword()const{
+string persona::getPassword()const{
 	return this->password;
 }
 
-void setAge(int age){
+void persona::setAge(int age){
 	this->age = age;
 }
-int getAge()const{
+int persona::getAge()const{
 	return this->age;
 }
 
-void setID(string ID){
+void persona::setID(string ID){
 	this->ID = ID;
 }
-string getID()const{
+string persona::getID()const{
 	return this->ID;
 }
 
-void setBirth(string birth){
+void persona::setBirth(string birth){
 	this->birth = birth;
 }
-string getBirth()const{
+string persona::getBirth()const{
 	return this->birth;
 }
 
-string toString(){
+string persona::toString(){
 	stringstream ss;
 	ss << "Nombre: " << RealName << "Usuario: " << UserName << "Password: " << " " << "Edad: " << age << "ID: " << ID << "Birth: " << birth;
-	return ss;
+	return ss.str();
 }
 
