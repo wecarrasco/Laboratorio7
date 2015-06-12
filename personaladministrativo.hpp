@@ -14,7 +14,7 @@ public:
 	string getClave() const;
 	void setPuesto(string puesto);
 	string getPuesto() const;
-private:
+protected:
 	string clave;
 	string puesto;
 };
