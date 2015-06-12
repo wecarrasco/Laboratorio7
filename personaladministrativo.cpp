@@ -8,7 +8,7 @@ PersonalAdministrativo::~PersonalAdministrativo(){}
 void PersonalAdministrativo::setClave(string clave){
 	this->clave = clave;
 }
-PersonalAdministrativo::string getClave() const{
+string PersonalAdministrativo::getClave() const{
 	return this->clave;
 }
 void PersonalAdministrativo::setPuesto(string puesto){
