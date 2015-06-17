@@ -8,7 +8,7 @@ using namespace std;
 class evidencia{
 
 public:
-	evidencia(string name,string type,string place,bool huella,bool process);
+	evidencia(string name,string type,string place,bool fingerPrint,bool process);
 	
 	~evidencia();
 	
@@ -21,20 +21,19 @@ public:
 	void setPlace(string palce);
 	string getPlace()const;
 
-	void setHuella(bool huella);
+	void setHuella(bool fingerPrint);
 	string getHuella()const;
-
-	void setRealName(string RealName);
-	string getRealName()const;
 
 	void setProcess(bool process);
 	string getProcess()const;
+
+	string toString()const;
 
 
 protected:
 	string name;
 	string type;
 	string place;
-	bool huella;
+	bool fingerPrint;
 	bool precess;
 };
