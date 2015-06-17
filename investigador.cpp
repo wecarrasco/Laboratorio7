@@ -1,11 +1,21 @@
+#include "persona.hpp"
 #include "investigador.hpp"
+#include <string>
+#include <sstream>
 
-Investigador::Investigador(int casosAtendidos, int casosCerrados, int casosSinResolver){
-	this->casosAtendidos = casosAtendidos;
-	this->casosCerrados = casosCerrados;
-	this->casosSinResolver = casosSinResolver;
+using namespace std;
+
+Investigador::Investigador(string RealName,string UserName,string password,int age,string ID,string birth)
+	:persona(string RealName,string UserName,string password,int age,string ID,string birth),casosAtendidos(0),casosCerrados(0),casosSinResolver(0){
+	
 }
-Investigador::~Investigador(){}
+Investigador::Investigador(const Investigador& other)	
+	:persona(other),casosAtendidos(other.casosAtendidos),casosCerrados(other.casosCerrados),casosSinResolver(other.casosSinResolver){
+
+}
+Investigador::~Investigador(){
+
+}
 void Investigador::setcasosAtendidos(int casosAtendidos){
 	this->casosAtendidos = casosAtendidos;
 }
@@ -15,12 +25,18 @@ int Investigador::getcasosAtendidos() const{
 void Investigador::setcasosCerrados(int casosCerrados){
 	this->casosCerrados = casosCerrados;
 }
-int PersonalAdministrativo::getcasosCerrados() const{
+int Investigador::getcasosCerrados() const{
 	return this->casosCerrados
 }
-void PersonalAdministrativo::setcasosSinResolver(int casosSinResolver){
+void Investigador::setcasosSinResolver(int casosSinResolver){
 	this->casosSinResolver = casosSinResolver;
 }
-int PersonalAdministrativo::getcasosSinResolver() const{
+int Investigador::getcasosSinResolver() const{
 	return this->casosSinResolver;
+}
+
+string Investigador::toString()const{
+	stringstream ss;
+	ss << persona::toString() << "\n\t Caso Atendidos: " << casosAtendidos << "\n\t Caso Cerrados: " << casosCerrados << "\n\t Caso sin Resolver: " << casosSinResolver;
+	return ss.str();
 }
