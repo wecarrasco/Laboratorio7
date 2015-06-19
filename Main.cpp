@@ -17,9 +17,9 @@ bool menuSN();
 int menuUsuario();
 
 int main(int argc, char* argv[]){
-	vector <Persona> personas;
-	vector <Casos> lista_casos;
-	vector <Evidencias> lista_evidencias;
+	vector <persona> personas;
+	vector <casos> lista_casos;
+	vector <evidencia> lista_evidencias;
 	int op_prin;//int para el Menu Principal
 	do{
 		op_prin=menuPrincipal();
