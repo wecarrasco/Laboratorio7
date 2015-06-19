@@ -8,7 +8,8 @@ class homicidio: public casos{
 
 public:
 	
-	homicidio(string, string, string): casos(int,string,string,bool);
+	homicidio(string sospechoso_p, string culpable, string victima, int num_caso, string hour, string date, bool closed);
+	homicidio(const homicidio&);
 	virtual ~homicidio();
 
 	virtual string toString()const; 

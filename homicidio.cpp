@@ -1,4 +1,4 @@
-#include "evidencias.hpp"
+#include "evidencia.hpp"
 #include "homicidio.hpp"
 #include <string>
 #include <sstream>
@@ -6,9 +6,15 @@
 using namespace std;
 
 homicidio::homicidio(string sospechoso_p, string culpable, string victima, int num_caso, string hour, string date, bool closed)
-:Casos(num_caso,hour,date,closed), sospechoso_p(sospechoso_p), culpable(culpable), victima(victima){
+:casos(num_caso,hour,date,closed), sospechoso_p(sospechoso_p), culpable(culpable), victima(victima){
 	vector<string> sospechosos;
 }
+
+homicidio::homicidio(const homicidio& other)
+		:casos(other),sospechoso_p(other.sospechoso_p),culpable(other.culpable),victima(other.victima){
+
+}
+
 
 string homicidio::toString()const{
 	stringstream ss;
