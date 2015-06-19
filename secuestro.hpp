@@ -8,7 +8,7 @@ class secuestro: public casos{
 
 public:
 	secuestro(int,string,string,bool,string,string,string,bool,int);
-	secuestro(const Secuestro&);
+	secuestro(const secuestro&);
 	virtual ~secuestro();
 	
 	virtual string toString()const;

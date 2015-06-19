@@ -6,7 +6,7 @@
 using namespace std;
 
 	secuestro::secuestro(int num_caso,string hour, string date, bool closed, string victim, string lugar,string motivo, bool rescate, 
-	int cantidad):Casos(num_caso,hour,date,closed), victim(victim), lugar(lugar), motivo(motivo), rescate(rescate), cantidad(cantidad){
+	int cantidad):casos(num_caso,hour,date,closed), victim(victim), lugar(lugar), motivo(motivo), rescate(rescate), cantidad(cantidad){
 
 	}
 
