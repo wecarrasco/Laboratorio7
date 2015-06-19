@@ -34,24 +34,24 @@ void evidencia::setPlace(string palce){
 	this-> place = place;
 }
 string evidencia::getPlace()const{
-	return palce;
+	return place;
 }
 void evidencia::setHuella(bool fingerPrint){
 	this-> fingerPrint = fingerPrint;
 }
-string evidencia::getHuella()const{
+bool evidencia::getHuella()const{
 	return fingerPrint;
 }
-void setProcess(bool process){
+void evidencia::setProcess(bool process){
 	this-> process = process;
 }
-string getProcess()const{
+bool evidencia::getProcess()const{
 	return process;
 }
-string toString()const{
+string evidencia::toString()const{
 	stringstream ss;
 	string finger=" ";
-	stirng proces=" ";
+	string proces=" ";
 	if(fingerPrint==true){
 		finger="yes";
 	}else{

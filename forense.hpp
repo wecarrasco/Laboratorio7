@@ -9,7 +9,7 @@ class forense:public persona{
 public:
 
 	forense(string RealName,string UserName,string password,int age,string ID,string birth,string fecha_ingreso,string horario);
-	forense(const Forense&);
+	forense(const forense&);
 	virtual ~forense();
 	
 	virtual string toString()const;

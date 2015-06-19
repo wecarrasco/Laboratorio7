@@ -22,10 +22,10 @@ public:
 	string getPlace()const;
 
 	void setHuella(bool fingerPrint);
-	string getHuella()const;
+	bool getHuella()const;
 
 	void setProcess(bool process);
-	string getProcess()const;
+	bool getProcess()const;
 
 	string toString()const;
 
@@ -35,5 +35,5 @@ protected:
 	string type;
 	string place;
 	bool fingerPrint;
-	bool precess;
+	bool process;
 };
