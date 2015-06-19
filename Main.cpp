@@ -1,5 +1,4 @@
-#include <iostream>
-#include <typeinfo>
+
 #include "casos.hpp"
 #include "evidencia.hpp"
 #include "homicidio.hpp"
@@ -9,7 +8,11 @@
 #include "investigador.hpp"
 #include "personaladministrativo.hpp"
 
+#include <iostream>
+#include <typeinfo>
+
 using namespace std;
+
 int menuPrincipal();
 int Tipo_Cuenta();
 string menuArmas();
@@ -24,8 +27,12 @@ int main(int argc, char* argv[]){
 	int op_prin;//int para el Menu Principal
 	do{
 		op_prin=menuPrincipal();
+		for (int i = 0; i < personas.size(); i++)
+		{
+			cout << "Usuario: " << personas[i].getUser() << "Contra: "<< personas[i].getPassword() << "tipo: " << typeid(personas[i]).name() ;
+		}
 		switch(op_prin){
-			case 1:{
+			case 2:{
 				int cuenta=Tipo_Cuenta();
 				cout<<"Ingrese su nombre real: ";
 				string nom_real;
@@ -60,7 +67,9 @@ int main(int argc, char* argv[]){
 					string puesto;
 					cin>>puesto;
 					cout<<endl; 
+
 					PersonalAdministrativo p(nom_real,nom_usu,contrasena,edad,cedula,fecha_nac,clave,puesto);
+					cout << "tipo: "
 					personas.push_back(p);
 				}else if (cuenta==2){
 					cout<<"Ingrese el numero de casos atendidos: ";
@@ -91,14 +100,15 @@ int main(int argc, char* argv[]){
 					personas.push_back(f);
 				}//end if;
 			}
-			case 2:{
+			break;
+			case 1:{
 				string usuario, contrasena;
 				cout << "\nINICIO SESION:\nIngrese su nombre de usuario: ";
 				cin >> usuario;
 				cout << "Ingrese su contrasena: ";
 				cin >> contrasena;
 				int tipousuario = -1;
-				for (int i = 0; i < personas.size(); ++i){
+				for (int i = 0; i < personas.size(); i++){
 					if(personas[i].logIn(usuario,contrasena)){
 						if(typeid(personas[i]).name() == "forense"){
 							tipousuario = 3;
@@ -168,7 +178,7 @@ int main(int argc, char* argv[]){
 							int pos;
 							do{
 								cout << "Lista de Investigadores:" << endl;
-								for (int i = 0; i < personas.size(); ++i){
+								for (int i = 0; i < personas.size(); i++){
 									if(typeid(personas[i]).name() == "investigador"){
 										cout << i+1 << personas[i].toString() << endl;
 									}
@@ -184,7 +194,7 @@ int main(int argc, char* argv[]){
 						case 2:{ // ver caso
 							if(tipousuario != 3){
 								cout << "Lista de Secuestros:" << endl;
-								for (int i = 0; i < lista_casos.size(); ++i){
+								for (int i = 0; i < lista_casos.size(); i++){
 									if(typeid(lista_casos[i]).name() == "secuestro")
 										cout << lista_casos[i].toString() << endl;
 								}
@@ -192,7 +202,7 @@ int main(int argc, char* argv[]){
 							}
 							if(tipousuario != 1){
 								cout << "Lista de Homicidios:" << endl;
-								for (int i = 0; i < lista_casos.size(); ++i){
+								for (int i = 0; i < lista_casos.size(); i++){
 									if(typeid(lista_casos[i]).name() == "homicidio")
 										cout << lista_casos[i].toString() << endl;
 								}
@@ -203,7 +213,7 @@ int main(int argc, char* argv[]){
 						case 3:{ //eliminar caso
 							int pos;
 							cout << "Lista de Casos: ";
-							for (int i = 0; i < lista_casos.size(); ++i)
+							for (int i = 0; i < lista_casos.size(); i++)
 								cout << i+1 << lista_casos[i].toString() << endl;
 							cout << "Ingrese el caso que desea eliminar: ";
 							cin >> pos;
@@ -236,7 +246,7 @@ int main(int argc, char* argv[]){
 						}
 						case 5:{ //ver evidencia
 							cout << "Lista de Evidencias:" << endl;
-							for (int i = 0; i < lista_evidencias.size(); ++i)
+							for (int i = 0; i < lista_evidencias.size(); i++)
 								cout << lista_evidencias[i].toString() << endl;
 							cout << endl;
 							break;
@@ -244,7 +254,7 @@ int main(int argc, char* argv[]){
 						case 6:{ // eliminar evidencia
 							int pos;
 							cout << "Lista de Evidencias:" << endl;
-							for (int i = 0; i < lista_evidencias.size(); ++i)
+							for (int i = 0; i < lista_evidencias.size(); i++)
 								cout << i+1 << lista_evidencias[i].toString() << endl;
 							cout << "Ingrese la evidencia que desea eliminar: ";
 							cin >> pos;
@@ -256,7 +266,7 @@ int main(int argc, char* argv[]){
 						}
 						case 7:{ // ver usuarios
 							cout << "Lista de Usuarios:" << endl;
-							for (int i = 0; i < personas.size(); ++i)
+							for (int i = 0; i < personas.size(); i++)
 								cout << personas[i].toString() << endl;
 							cout << endl;
 							break;
@@ -264,7 +274,7 @@ int main(int argc, char* argv[]){
 						case 8:{ // eliminar usuarios
 							int pos;
 							cout << "Lista de Usuarios:" << endl;
-							for (int i = 0; i < personas.size(); ++i)
+							for (int i = 0; i < personas.size(); i++)
 								cout << i+1 << personas[i].toString() << endl;
 							cout << "Ingrese el usuario que desea eliminar: ";
 							cin >> pos;
@@ -284,6 +294,7 @@ int main(int argc, char* argv[]){
 	}while(op_prin != 3);	
 }
 
+
 int menuPrincipal(){
 	int opcion;
 	cout<<"BIENVENIDO"<<endl;
@@ -294,7 +305,7 @@ int menuPrincipal(){
 	cin>>opcion;
 	cout<<endl;
 
-	while (!(opcion<1||opcion>3)){
+	while ((opcion<1||opcion>3)){
 		cout<<"Opcion no valida."<<endl;
 		cout<<"Ingrese su opcion: ";
 		cin>>opcion;
@@ -311,7 +322,7 @@ int menuCaso(){
 	cin>>opcion;
 	cout<<endl;
 
-	while (!(opcion<1||opcion>2)){
+	while ((opcion<1||opcion>2)){
 		cout<<"Opcion no valida."<<endl;
 		cout<<"Ingrese su opcion: ";
 		cin>>opcion;

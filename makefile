@@ -1,29 +1,35 @@
-exe:	Main.o casos.o evidencia.o homicidio.o secuestro.o persona.o forense.o investigador.o personaladministrativo.o
-	g++ Main.o casos.o evidencia.o homicidio.o secuestro.o persona.o forense.o investigador.o personaladministrativo.o -o exe
+rm:	exe
+	rm *.o
 
-Main.o: Main.cpp casos.hpp evidencia.hpp homicidio.hpp secuestro.hpp persona.hpp forense.hpp investigador.hpp personaladministrativo.hpp
-	g++ Main.cpp
+exe:	persona.o personaladministrativo.o investigador.o forense.o evidencia.o casos.o homicidio.o secuestro.o
+	g++ Main.cpp persona.o personaladministrativo.o investigador.o forense.o evidencia.o casos.o homicidio.o secuestro.o -o exe
 
-homicidio.o: homicidio.hpp homicidio.cpp casos.hpp
-	g++ -c homicidio.cpp
-
-secuestro.o: secuestro.hpp secuestro.cpp casos.hpp
-	g++ -c secuestro.cpp
-
-casos.o: casos.hpp casos.cpp
-	g++ -c casos.cpp
-
-personaladministrativo.o: personaladministrativo.hpp personaladministrativo.cpp persona.hpp
-	g++ -c personaladministrativo.cpp
-
-investigador.o: investigador.hpp investigador.cpp persona.hpp
-	g++ -c investigador.cpp
-
-forense.o: forense.hpp forense.cpp persona.hpp
-	g++ -c forense.cpp
-
-persona.o: persona.hpp persona.cpp
+persona.o: personaladministrativo.o investigador.o forense.o evidencia.o casos.o homicidio.o secuestro.o
 	g++ -c persona.cpp
 
-evidencia.o: evidencia.hpp evidencia.cpp 
+personaladministrativo.o: investigador.o forense.o evidencia.o casos.o homicidio.o secuestro.o
+	g++ -c personaladministrativo.cpp
+
+investigador.o: forense.o evidencia.o casos.o homicidio.o secuestro.o
+	g++ -c investigador.cpp
+
+forense.o: evidencia.o casos.o homicidio.o secuestro.o
+	g++ -c forense.cpp
+
+evidencia.o: casos.o homicidio.o secuestro.o
 	g++ -c evidencia.cpp
+
+casos.o: homicidio.o secuestro.o
+	g++ -c casos.cpp
+
+
+homicidio.o: secuestro.o
+	g++ -c homicidio.cpp
+
+secuestro.o: 
+	g++ -c secuestro.cpp
+
+
+
+
+
