@@ -16,14 +16,14 @@ casos.o: casos.hpp casos.cpp
 personaladministrativo.o: personaladministrativo.hpp personaladministrativo.cpp persona.hpp
 	g++ -c personaladministrativo.cpp
 
-investigador.o: investigadores.hpp investigador.cpp persona.hpp
+investigador.o: investigador.hpp investigador.cpp persona.hpp
 	g++ -c investigador.cpp
 
-Forense.o: forense.hpp forense.cpp persona.hpp
+forense.o: forense.hpp forense.cpp persona.hpp
 	g++ -c forense.cpp
 
 persona.o: persona.hpp persona.cpp
 	g++ -c persona.cpp
 
-evidencias.o: evidencia.hpp evidencia.cpp 
-	g++ -c Evidencias.cpp
+evidencia.o: evidencia.hpp evidencia.cpp 
+	g++ -c evidencia.cpp

@@ -14,6 +14,7 @@ homicidio::homicidio(const homicidio& other)
 		:casos(other),sospechoso_p(other.sospechoso_p),culpable(other.culpable),victima(other.victima){
 
 }
+homicidio::~homicidio(){}
 
 
 string homicidio::toString()const{

@@ -12,6 +12,7 @@ PersonalAdministrativo::PersonalAdministrativo(const PersonalAdministrativo& oth
 
 }
 PersonalAdministrativo::~PersonalAdministrativo(){}
+
 void PersonalAdministrativo::setClave(string clave){
 	this->clave = clave;
 }
