@@ -1,6 +1,6 @@
-#include "casos.hpp"
-#include "Investigador.hpp"
-#include "Evidencias.hpp"
+#include "casos.h"
+#include "Investigador.h"
+#include "Evidencias.h"
 #include <string>
 #include <sstream>
 #include <vector>
