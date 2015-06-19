@@ -14,8 +14,8 @@ public:
 	
 	virtual string toString()const;
 	
-	void addInvestigators(investigator* investigator);
-	void addEvidence(evidencias* evidencia);
+	void addInvestigators(investigador* investigator);
+	void addEvidence(evidencia* evidence);
 	
 	void setNum_caso(int);
 	int getNum_caso()const;
@@ -23,18 +23,18 @@ public:
 	void setHour(string);
 	string getHour()const;
 	
-	void setDate(string)const;
-	string getDate();
+	void setDate(string);
+	string getDate()const;
 	
-	void setClosed(bool)const;
-	bool getClosed();
+	void setClosed(bool);
+	bool getClosed()const;
 
 protected:
 	int num_caso;
-	vector<investigador*> investigators;
+	vector<investigador*> investigator;
 	vector<evidencia*> evidence; 
 	string hour;
-	stirng date;
+	string date;
 	bool closed;
 	
 };

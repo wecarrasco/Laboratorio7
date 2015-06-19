@@ -5,12 +5,12 @@
 
 using namespace std;
 
-class Investigador:public persona{
+class investigador:public persona{
 public:
-	Investigador(string RealName,string UserName,string password,int age,string ID,string birth);
-	Investigador(const Investigador&);	
+	investigador(string RealName,string UserName,string password,int age,string ID,string birth);
+	investigador(const investigador&);	
 	
-	virtual ~Investigador();
+	virtual ~investigador();
 	
 	void setcasosAtendidos(int casosAtendidos);
 	int getcasosAtendidos() const;

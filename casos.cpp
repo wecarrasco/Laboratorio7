@@ -1,6 +1,6 @@
 #include "casos.hpp"
-#include "Investigador.hpp"
-#include "Evidencias.hpp"
+#include "investigador.hpp"
+#include "evidencia.hpp"
 #include <string>
 #include <sstream>
 #include <vector>
@@ -9,41 +9,41 @@ using namespace std;
 
 casos::casos(int num_caso,string hour,string date,bool closed):num_caso(num_caso),
 hour(hour),date(date),closed(closed){
-		vector<investigator*> investigators;
-		vector<evidencias*> evidence; 
+		vector<investigador*> investigator;
+		vector<evidencia*> evidence; 
 }
 
-casos::casos(const Casos& other):num_caso(other.num_caso),hour(other.hour),
+casos::casos(const casos& other):num_caso(other.num_caso),hour(other.hour),
 date(other.date),closed(other.closed){
-	investigators = other.investigators;
-	evidence = other.evidence;
+	this->investigator = other.investigator;
+	this->evidence = other.evidence;
 }
 
 string casos::toString()const{
 		stringstream ss;
-		ss << "Caso Número: " << num_caso << " \n\tHora: " << hour << "\n\tFecha: "
-		<< date << "\n\tCaso Cerrado?: " << cerrado << "\n\tInvestigadores: ";
-		for (int i = 0; i < investigators.size(); i++){
-			ss << "\t\t" << investigators[i]->toString() << "\n";
+		ss << "Caso Número: " << num_caso << " \n\tHora: " << hour << "\n\tFecha: "	<< date << "\n\tCaso Cerrado?: " << closed << "\n\tInvestigadores: ";
+		for (int i = 0; i < investigator.size(); i++){
+			ss << "\t\t" << investigator[i]->toString() << "\n";
 		}
 		ss << "\n\tEvidencia: ";
 		for (int i = 0; i < evidence.size(); i++){
 			ss << "\t\t" << evidence[i]->toString() << "\n";
 		}
 
-		retrun ss.str();  	
+		return ss.str();  	
 }
 
 void casos::setNum_caso(int num_caso){
 	this->num_caso = num_caso;
 }
 
-void casos::addInvestigators(investigator* investigator){
-	investigators.push_back(investigator);
+void casos::addInvestigators(investigador* investigator){
+	this->investigator.push_back(investigator);
 }
 
-void casos::addEvidence(evidencias* evidencia);
-	evidence.push_back(evidencia);
+void casos::addEvidence(evidencia* evidence){
+	this-> evidence.push_back(evidence);
+
 }
 
 int casos::getNum_caso()const{
@@ -75,10 +75,10 @@ bool casos::getClosed()const{
 }
 
 casos::~casos(){
-	for(int i = 0; i < investigators.size(); i++){
-		delete investigators[i];
+	for(int i = 0; i < investigator.size(); i++){
+		delete investigator[i];
 	}
-	for(int i = 0; i < evidence.size(); í++){
+	for(int i = 0; i < evidence.size(); i++){
 		delete evidence[i];
 	}
 }
