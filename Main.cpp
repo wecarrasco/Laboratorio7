@@ -17,9 +17,9 @@ bool menuSN();
 int menuUsuario();
 
 int main(int argc, char* argv[]){
-	vector <Persona*> personas;
-	vector <Casos*> lista_casos;
-	vector <Evidencias*> lista_evidencias;
+	vector <Persona> personas;
+	vector <Casos> lista_casos;
+	vector <Evidencias> lista_evidencias;
 	int op_prin;//int para el Menu Principal
 	do{
 		op_prin=menuPrincipal();
@@ -59,7 +59,8 @@ int main(int argc, char* argv[]){
 					string puesto;
 					cin>>puesto;
 					cout<<endl; 
-					personas.push_back(new PersonalAdministrativo(nom_real,nom_usu,contrasena,edad,cedula,fecha_nac,clave,puesto));
+					PersonalAdministrativo p(nom_real,nom_usu,contrasena,edad,cedula,fecha_nac,clave,puesto);
+					personas.push_back(p);
 				}else if (cuenta==2){
 					cout<<"Ingrese el numero de casos atendidos: ";
 					int casos_a;
@@ -73,7 +74,8 @@ int main(int argc, char* argv[]){
 					int casos_sr;
 					cin>>casos_sr;
 					cout<<endl;
-					personas.push_back(new Investigador(nom_real,num_usu,contrasena,edad,cedula,fecha_nac,casos_a,casos_c,casos_sr));
+					investigador i(nom_real,num_usu,contrasena,edad,cedula,fecha_nac,casos_a,casos_c,casos_sr);
+					personas.push_back(i);
 				}else if (cuenta==3){
 					cout<<"Ingrese la fecha de ingreso a la organizacion: ";
 					string fecha_i;
@@ -83,7 +85,8 @@ int main(int argc, char* argv[]){
 					string horario;
 					cin>>horario;
 					cout<<endl;
-					personas.push_back(new Forense(nom_real,num_usu,contrasena,edad,cedula,fecha_nac,fecha_i,horario));
+					forense f(nom_real,num_usu,contrasena,edad,cedula,fecha_nac,fecha_i,horario);
+					personas.push_back(f);
 				}//end if;
 			}
 			case 2:{
@@ -95,14 +98,14 @@ int main(int argc, char* argv[]){
 				int tipousuario = -1;
 				for (int i = 0; i < personas.size(); ++i){
 					if(personas[i]->logIn(usuario,contrasena)){
-						if(typeid(personas[i]).name() == "Forense"){
+						if(typeid(personas[i]).name() == "forense"){
 							tipousuario = 3;
-						}else if(typeid(personas[i]).name() == "Investigador"){
+						}else if(typeid(personas[i]).name() == "investigador"){
 							tipousuario = 2;
 						}else if(typeid(personas[i]).name() == "PersonalAdministrativo"){
 							tipousuario = 1;
 						}else{
-							cout << "entro no cambio... error" << endl;
+							cout << "error" << endl;
 						}
 						break;
 					}
@@ -132,9 +135,12 @@ int main(int argc, char* argv[]){
 								if(closed){
 									cout << "Ingrese el nombre del culpable: ";
 									cin >> culpable;
-								} else
-									culpable = "";	
-								lista_casos.push_back(new Homicidio(num_caso,hour,date,closed,sospechoso_prin,culpable,victima));
+								} else{
+									culpable = "";
+								}
+
+								homicidio h(num_caso,hour,date,closed,sospechoso_prin,culpable,victima);
+								lista_casos.push_back(h);
 							}else{
 								string victima,lugar,motivo;
 								bool rescate;
@@ -150,15 +156,18 @@ int main(int argc, char* argv[]){
 								if(rescate){
 									cout << "Ingrese la cantidad pedida de rescate: ";
 									cin >> rescate;
-								}else
+								}else{
 									rescate = 0;
-								lista_casos.push_back(new Secuestro(num_caso,hour,date,closed,victima,lugar,motivo,rescate,cant_rescate));	
+								}
+
+								secuestro s(num_caso,hour,date,closed,victima,lugar,motivo,rescate,cant_rescate);
+								lista_casos.push_back(s);	
 							}
 							int pos;
 							do{
 								cout << "Lista de Investigadores:" << endl;
 								for (int i = 0; i < personas.size(); ++i)
-									if(typeid(personas[i].name() == "Investigador")){
+									if(typeid(personas[i].name() == "investigador")){
 										cout << i+1 << personas[i]->toString() << endl;
 									}
 								cout << "Ingrese el investigador que desea agregar al caso:\n(si no va a agregar mas, ingrese -1)"<< endl;
@@ -173,7 +182,7 @@ int main(int argc, char* argv[]){
 							if(tipousuario != 3){
 								cout << "Lista de Secuestros:" << endl;
 								for (int i = 0; i < lista_casos.size(); ++i){
-									if(typeid(lista_casos[i]).name() == "Secuestro")
+									if(typeid(lista_casos[i]).name() == "secuestro")
 										cout << lista_casos[i]->toString() << endl;
 								}
 								cout << endl;
@@ -181,7 +190,7 @@ int main(int argc, char* argv[]){
 							if(tipousuario != 1){
 								cout << "Lista de Homicidios:" << endl;
 								for (int i = 0; i < lista_casos.size(); ++i){
-									if(typeid(lista_casos[i]).name() == "Homicidio")
+									if(typeid(lista_casos[i]).name() == "homicidio")
 										cout << lista_casos[i]->toString() << endl;
 								}
 								cout << endl;
@@ -215,7 +224,8 @@ int main(int argc, char* argv[]){
 								huellas = menuSN();
 								cout << "Fue procesada? " << endl;
 								procesada = menuSN();
-								lista_evidencias.push_back(new Evidencias(nombre,arma,lugar,huellas,procesada));
+								evidencia e(nombre,arma,lugar,huellas,procesada);
+								lista_evidencias.push_back(e);
 								cout << "Evidencia agregada exitosamente" << endl;
 							}else
 								cout << "No tiene acceso a esta funcion." << endl;
