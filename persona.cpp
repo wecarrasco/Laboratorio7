@@ -4,13 +4,19 @@
 
 using namespace std;
 
-persona::persona(string RealName,string UserName,string password,int age,string ID,string birth){
+persona::persona(string RealName,string UserName,string password,int age,string ID,string birth)
+		 :RealName(RealName),UserName(UserName),password(password),age(age),ID(ID),birth(birth){
 	this-> RealName = RealName;
 	this-> UserName = UserName;
 	this-> password = password;
 	this-> age = age;
 	this-> ID = ID;
 	this-> birth = birth;
+}
+
+persona::persona(const persona& other)
+		 :RealName(other.RealName),UserName(other.UserName),password(other.password),age(other.age),ID(other.ID),birth(other.birth){
+
 }
 
 persona::~persona(){
@@ -65,5 +71,9 @@ string persona::toString(){
 	stringstream ss;
 	ss << "Nombre: " << RealName << "Usuario: " << UserName << "Password: " << " " << "Edad: " << age << "ID: " << ID << "Birth: " << birth;
 	return ss.str();
+}
+
+bool persona::logIn(stirng UserName,string password){
+	return this->UserName==UserName && this->password==password;
 }
 

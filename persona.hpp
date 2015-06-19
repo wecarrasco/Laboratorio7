@@ -9,8 +9,8 @@ class persona{
 
 public:
 	persona(string RealName,string UserName,string password,int age,string ID,string birth);
-	
-	~persona();
+	persona(const persona&);
+	virtual ~persona();
 	
 	void setRealName(string RealName);
 	string getRealName()const;
@@ -30,7 +30,9 @@ public:
 	void setBirth(string birth);
 	string getBirth()const;
 
-	string toString();
+	bool logIn(string UserName,string password);
+	
+	virtual string toString();
 
 protected:
 	string RealName;
