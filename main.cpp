@@ -12,7 +12,9 @@
 #include <sstream>
 #include <iostream>
 #include <vector>
+#include <typeinfo>
 
+using namespace std;
 
 int main(int argc, char const *argv[])
 {
@@ -63,7 +65,7 @@ int main(int argc, char const *argv[])
 
 			if (tipo == 1)
 			{
-				string RealName,string UserName,string password, string ID,string birth, string clave, string puesto;
+				string RealName, UserName, password, ID, birth, clave, puesto;
 				int age;
 				cout << "Nombre: ";
 				cin << RealName;
@@ -79,10 +81,45 @@ int main(int argc, char const *argv[])
 				cin >> clave;
 				cout << "Puesto: ";
 				cin >> puesto;
+				cout << "Edad: ";
+				cin >> age;
 				PersonalAdministrativo p (RealName, UserName, password, age, ID, birth, clave, puesto);
 				listaPersonas.push_back(p);
+			}else if(tipo == 2){
+				/*string RealName,string UserName,string password,string ID,string birth;
+				int age;*/
+
+			}else{
+				string RealName, UserName, password, ID, birth, fecha_ingreso, horario;
+				int age;
+				cout << "Nombre: ";
+				cin << RealName;
+				cout << "Usuario: ";
+				cin >> UserName;
+				cout << "Contrasena: ";
+				cin >> password;
+				cout << "ID: ";
+				cin >> ID;
+				cout << "Fecha de Nacimiento: ";
+				cin >> birth;
+				cout << "Fecha de Ingreso: ";
+				cin >> fecha_ingreso;
+				cout << "Horario: ";
+				cin >> horario;
+
+				forense f(string RealName,string UserName,string password,int age,string ID,string birth,string fecha_ingreso,string horario);
+				listaPersonas.push_back(f);
 			}
 
+		}
+		if (login)
+		{
+			login = false;
+
+			for (int i = 0; i < persona.size(); i++)
+			{
+				typeid(persona[i]).name();
+			}
 		}
 	}
 
