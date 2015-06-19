@@ -1,4 +1,6 @@
 #include "personaladministrativo.hpp"
+#include <sstream>
+#include <string>
 
 PersonalAdministrativo::PersonalAdministrativo(string RealName,string UserName,string password,int age,string ID,string birth, string clave, string puesto)
 		:persona(RealName,UserName,password,age,ID,birth),clave(clave),puesto(puesto){
@@ -24,7 +26,7 @@ string PersonalAdministrativo::getPuesto() const{
 }
 
 string PersonalAdministrativo::toString()const{
-	streamstring ss;
+	stringstream ss;
 	ss << persona::toString() << "Clave: " << clave << "Puesto: " << puesto;
 	return ss.str();
 }

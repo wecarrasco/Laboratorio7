@@ -6,10 +6,10 @@
 using namespace std;
 
 investigador::investigador(string RealName,string UserName,string password,int age,string ID,string birth)
-	:persona(string RealName,string UserName,string password,int age,string ID,string birth),casosAtendidos(0),casosCerrados(0),casosSinResolver(0){
+	:persona( RealName, UserName, password,age, ID, birth),casosAtendidos(0),casosCerrados(0),casosSinResolver(0){
 	
 }
-investigador::investigador(const Investigador& other)	
+investigador::investigador(const investigador& other)	
 	:persona(other),casosAtendidos(other.casosAtendidos),casosCerrados(other.casosCerrados),casosSinResolver(other.casosSinResolver){
 
 }
@@ -26,7 +26,7 @@ void investigador::setcasosCerrados(int casosCerrados){
 	this->casosCerrados = casosCerrados;
 }
 int investigador::getcasosCerrados() const{
-	return this->casosCerrados
+	return this->casosCerrados;
 }
 void investigador::setcasosSinResolver(int casosSinResolver){
 	this->casosSinResolver = casosSinResolver;
