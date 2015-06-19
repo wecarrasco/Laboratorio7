@@ -73,7 +73,7 @@ string persona::toString(){
 	return ss.str();
 }
 
-bool persona::logIn(stirng UserName,string password){
+bool persona::logIn(string UserName,string password){
 	return this->UserName==UserName && this->password==password;
 }
 
