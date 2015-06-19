@@ -6,7 +6,7 @@
 using namespace std;
 
 homicidio::homicidio(string sospechoso_p, string culpable, string victima, int num_caso, string hour, string date, bool closed)
-:casos(num_caso,hour,date,closed), sospechoso_p(sospechoso_p), culpable(culpable), victima(victima){
+		:casos(num_caso,hour,date,closed), sospechoso_p(sospechoso_p), culpable(culpable), victima(victima){
 	vector<string> sospechosos;
 }
 
