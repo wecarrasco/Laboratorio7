@@ -67,7 +67,7 @@ string persona::getBirth()const{
 	return this->birth;
 }
 
-string persona::toString(){
+string persona::toString()const{
 	stringstream ss;
 	ss << "Nombre: " << RealName << "Usuario: " << UserName << "Password: " << " " << "Edad: " << age << "ID: " << ID << "Birth: " << birth;
 	return ss.str();

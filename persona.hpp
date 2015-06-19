@@ -32,7 +32,7 @@ public:
 
 	bool logIn(string UserName,string password);
 	
-	virtual string toString();
+	virtual string toString()const;
 
 protected:
 	string RealName;
